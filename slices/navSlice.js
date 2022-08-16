@@ -11,7 +11,7 @@ const initialState = { //출발과 도착지를 저장해놓음으로써 언제�
 export const navSlice = createSlice({ //navslice를 이용해서 reducer와 action type을 간편화시켰다. 
     name : 'nav',
     initialState,
-    reducer: {
+    reducers: {
         setOrigin : (state, action) => {
             state.origin = action.payload;
         },

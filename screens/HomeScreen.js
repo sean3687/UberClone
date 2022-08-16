@@ -3,10 +3,12 @@ import React from 'react'
 import tw from "tailwind-react-native-classnames";
 import { Image } from 'react-native' ; 
 import NavOptions from '../components/NavOptions';
+import NavFavorites from '../components/NavFavorites';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_APIKEY } from "@env"
 import { useDispatch } from 'react-redux';
-import { setDestination, setOrigin } from '../slices/navSlice';
+import { setDestination, setOrigin } from "../slices/navSlice";
+
 
 const HomeScreen = ({}) => { 
   const dispatch = useDispatch();
@@ -38,12 +40,13 @@ const HomeScreen = ({}) => {
           onPress={(data, details = null) => {
             dispatch(
               setOrigin({
-                location: details.geometry.location,
-                description : data.description
-              })
-            );
+                location : details.geometry.location,
+                description: data.description
 
-            dispatch(setDestination(null));
+              })
+            )
+            dispatch(setDestination(null))
+            
           }}
           fetchDetails = {true}
           returnKeyType = {"search"}
@@ -57,8 +60,8 @@ const HomeScreen = ({}) => {
           debounce={400} //everytype we type the location we don't want api to look up constantly so add debound for delay
           
        />
-        
         <NavOptions/>
+        <NavFavorites/>
       </View>
     </SafeAreaView>
   )
